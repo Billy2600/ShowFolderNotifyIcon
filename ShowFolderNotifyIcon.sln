@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowFolderNotifyIcon", "ShowFolderNotifyIcon\ShowFolderNotifyIcon.csproj", "{EB3E05BE-BD13-4CD3-B20A-8CA261CCB1D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShowFolderNotifyIcon", "ShowFolderNotifyIcon\ShowFolderNotifyIcon.csproj", "{EB3E05BE-BD13-4CD3-B20A-8CA261CCB1D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowFolderNotifyIconTest", "ShowFolderNotifyIconTest\ShowFolderNotifyIconTest.csproj", "{31F94DCB-C33E-4255-BB82-61E48E3F7D2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{EB3E05BE-BD13-4CD3-B20A-8CA261CCB1D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB3E05BE-BD13-4CD3-B20A-8CA261CCB1D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB3E05BE-BD13-4CD3-B20A-8CA261CCB1D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31F94DCB-C33E-4255-BB82-61E48E3F7D2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31F94DCB-C33E-4255-BB82-61E48E3F7D2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31F94DCB-C33E-4255-BB82-61E48E3F7D2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31F94DCB-C33E-4255-BB82-61E48E3F7D2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
