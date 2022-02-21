@@ -9,6 +9,7 @@ namespace ShowFolderNotifyIcon
 {
     public class FolderContentsWidgetModel
     {
+        public string FolderPath { get; set; }
         public List<string>? FileList { get; set; }
     }
 }

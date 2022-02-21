@@ -19,6 +19,20 @@ namespace ShowFolderNotifyIcon
 
         #region Members
 
+        public string FolderPath
+        {
+            get { return _folderContentsWidget.FolderPath;}
+            set
+            {
+                if(_folderContentsWidget.FolderPath != value)
+                {
+                    _folderContentsWidget.FolderPath = value;
+                    _folderContentsWidget.FileList = GetFileList();
+                    OnPropertyChanged(nameof(_folderContentsWidget.FolderPath));
+                }
+            }
+        }
+
         public List<string>? FileList
         {
             get { return _folderContentsWidget.FileList; }
@@ -38,6 +52,7 @@ namespace ShowFolderNotifyIcon
         public FolderContentsWidgetViewModel(IFileSystem fileSystem)
         {
             _folderContentsWidget = new FolderContentsWidgetModel();
+            _folderContentsWidget.FolderPath = "D:\\steamapps\\steamapps\\common";
             _fileSystem = fileSystem;
 
             _folderContentsWidget.FileList = GetFileList();
@@ -45,9 +60,8 @@ namespace ShowFolderNotifyIcon
 
         public List<string> GetFileList()
         {
-            const string path = "D:\\steamapps\\steamapps\\common";
-            var directories = _fileSystem.Directory.GetDirectories(path);
-            var files = _fileSystem.Directory.GetFiles(path);
+            var directories = _fileSystem.Directory.GetDirectories(_folderContentsWidget.FolderPath);
+            var files = _fileSystem.Directory.GetFiles(_folderContentsWidget.FolderPath);
 
             return directories.Concat(files).ToList();
         }

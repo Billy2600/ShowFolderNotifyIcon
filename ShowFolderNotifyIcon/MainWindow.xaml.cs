@@ -39,6 +39,10 @@ namespace ShowFolderNotifyIcon
             InitializeComponent();
             Loaded += MainWindow_Loaded;
             taskbarIcon.TrayLeftMouseDown += TaskbarIcon_Click;
+            
+            OpenFolderDialog.MouseEnter += OpenFolderDialog_MouseEnter;
+            OpenFolderDialog.MouseLeave += OpenFolderDialog_MouseLeave;
+            OpenFolderDialog.MouseLeftButtonUp += OpenFolderDialog_MouseLeftUp;
         }
 
         #endregion
@@ -75,11 +79,38 @@ namespace ShowFolderNotifyIcon
             }
         }
 
+        public void ClearGrid()
+        {
+            // For now we can just remove all the text boxes
+            var elementsToRemove = new List<UIElement>();
+
+            foreach (UIElement element in mainGrid.Children)
+            {
+                if(element is TextBox)
+                {
+                    elementsToRemove.Add(element);
+                }
+            }
+
+            foreach(var element in elementsToRemove)
+            {
+                mainGrid.Children.Remove(element);
+            }
+
+
+            for (int i = 0; i < mainGrid.RowDefinitions.Count; i++)
+            {
+                if (mainGrid.RowDefinitions[i].Name != "ButtonsRow")
+                {
+                    mainGrid.RowDefinitions.RemoveAt(i);
+                }
+            }
+        }
+
         #endregion
 
         #region Event handlers
 
-        // So we can have "clean" unit tests that aren't calling a bunch of crazy methods because everything's in the constructor
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             var startPos = GetWindowStartPos();
@@ -98,6 +129,37 @@ namespace ShowFolderNotifyIcon
             else if (WindowState == WindowState.Normal)
             {
                 WindowState = WindowState.Minimized;
+            }
+        }
+
+        public void OpenFolderDialog_MouseEnter(object sender, MouseEventArgs e)
+        {
+            OpenFolderDialog.Background = new SolidColorBrush(Colors.Gray);
+        }
+
+        public void OpenFolderDialog_MouseLeave(object sender, MouseEventArgs e)
+        {
+            OpenFolderDialog.Background = new SolidColorBrush(Colors.Black);
+        }
+
+        // Opens file dialogue
+        public void OpenFolderDialog_MouseLeftUp(object sender, MouseEventArgs e)
+        {
+            using var dialog = new System.Windows.Forms.FolderBrowserDialog
+            {
+                Description = "Select folder to display",
+                UseDescriptionForTitle = true,
+                SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + System.IO.Path.DirectorySeparatorChar, ShowNewFolderButton = true
+            };
+
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if(dialog.SelectedPath != _folderContentsWidgetViewModel.FolderPath)
+                {
+                    _folderContentsWidgetViewModel.FolderPath = dialog.SelectedPath;
+                    ClearGrid();
+                    PopulateGrid(_folderContentsWidgetViewModel.FileList);
+                }
             }
         }
 
