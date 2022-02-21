@@ -33,6 +33,7 @@ namespace ShowFolderNotifyIcon
 
         private void ConfigureServices(IConfiguration configuration, IServiceCollection services)
         {
+            services.AddScoped<FolderContentsWidgetViewModel, FolderContentsWidgetViewModel>();
             services.AddScoped<IFileSystem, FileSystem>();
             services.AddSingleton<MainWindow>();
         }

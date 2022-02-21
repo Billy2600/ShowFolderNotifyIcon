@@ -8,8 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ico\folder.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="1.1.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
     <PackageReference Include="System.IO.Abstractions" Version="16.1.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="ico\folder.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

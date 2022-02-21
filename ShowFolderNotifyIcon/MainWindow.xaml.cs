@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hardcodet.Wpf.TaskbarNotification;
+using System;
 using System.Collections.Generic;
 using System.IO.Abstractions;
 using System.Linq;
@@ -21,23 +22,27 @@ namespace ShowFolderNotifyIcon
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly IFileSystem _fileSystem;
+        private FolderContentsWidgetViewModel _folderContentsWidgetViewModel;
 
         public const int TaskbarHeight = 44;
 
         #region Constructors
 
-        public MainWindow(IFileSystem fileSystem)
+        public MainWindow(FolderContentsWidgetViewModel folderContentsWidgetViewModel)
         {
-            _fileSystem = fileSystem;
+            _folderContentsWidgetViewModel = folderContentsWidgetViewModel;
+            DataContext = _folderContentsWidgetViewModel;
+
+            // Taskbar icon will handle all the taskbar duties
+            this.ShowInTaskbar = false;
 
             InitializeComponent();
             Loaded += MainWindow_Loaded;
+            taskbarIcon.TrayLeftMouseDown += TaskbarIcon_Click;
         }
 
         #endregion
 
-        // Most methods are public, as to be unit testable
         #region Public Methods
 
         /// <summary>
@@ -51,40 +56,28 @@ namespace ShowFolderNotifyIcon
                 );
         }
 
-        public List<string> GetFileList()
+        public void PopulateGrid(List<string>? files)
         {
-            const string path = "D:\\documents\\QA stuff";
-            var directories = _fileSystem.Directory.GetDirectories(path);
-            var files = _fileSystem.Directory.GetFiles(path);
-
-            return directories.Concat(files).ToList();
-        }
-
-        // For unit testing
-        public Grid GetMainGrid()
-        {
-            return mainGrid;
-        }
-
-        public void PopulateGrid(List<string> files)
-        {
-            foreach(var file in files)
+            if (files != null)
             {
-                mainGrid.RowDefinitions.Add(new RowDefinition());
-                var fileTextBox = new TextBox();
-                fileTextBox.Text = file;
-                fileTextBox.SetValue(Grid.RowProperty, mainGrid.RowDefinitions.Count - 1);
-                fileTextBox.SetValue(Grid.ColumnProperty, 0);
-                fileTextBox.Background = new SolidColorBrush(Color.FromRgb(19, 19, 19));
-                fileTextBox.FontSize = 16;
-                fileTextBox.Foreground = new SolidColorBrush(Color.FromRgb(255, 255, 255));
-                mainGrid.Children.Add(fileTextBox);
+                foreach (var file in files)
+                {
+                    mainGrid.RowDefinitions.Add(new RowDefinition());
+                    var fileTextBox = new TextBox();
+                    fileTextBox.Text = file;
+                    fileTextBox.SetValue(Grid.RowProperty, mainGrid.RowDefinitions.Count - 1);
+                    fileTextBox.SetValue(Grid.ColumnProperty, 0);
+                    fileTextBox.Background = new SolidColorBrush(Color.FromRgb(19, 19, 19));
+                    fileTextBox.FontSize = 16;
+                    fileTextBox.Foreground = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+                    mainGrid.Children.Add(fileTextBox);
+                }
             }
         }
 
         #endregion
 
-        #region Private methods
+        #region Event handlers
 
         // So we can have "clean" unit tests that aren't calling a bunch of crazy methods because everything's in the constructor
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -93,8 +86,19 @@ namespace ShowFolderNotifyIcon
             this.Left = startPos.X;
             this.Top = startPos.Y;
 
-            var files = GetFileList();
-            PopulateGrid(files);
+            PopulateGrid(_folderContentsWidgetViewModel.FileList);
+        }
+
+        public void TaskbarIcon_Click(object sender, RoutedEventArgs e)
+        {
+            if(WindowState == WindowState.Minimized)
+            {
+                WindowState = WindowState.Normal;
+            }
+            else if (WindowState == WindowState.Normal)
+            {
+                WindowState = WindowState.Minimized;
+            }
         }
 
         #endregion
