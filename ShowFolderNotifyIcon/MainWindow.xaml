@@ -9,7 +9,7 @@
         ResizeMode="CanMinimize"
         Title="MainWindow" Height="450" Width="800" Background="#191919" Foreground="White">
     <ScrollViewer>
-        <Grid HorizontalAlignment="left" Height="auto" VerticalAlignment="Top" Width="760" ShowGridLines="True" Name="mainGrid">
+        <Grid HorizontalAlignment="left" Height="auto" VerticalAlignment="Top" Width="760" ShowGridLines="False" Name="mainGrid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="760"></ColumnDefinition>
             </Grid.ColumnDefinitions>

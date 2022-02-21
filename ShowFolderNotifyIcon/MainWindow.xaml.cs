@@ -52,7 +52,7 @@ namespace ShowFolderNotifyIcon
         /// <summary>
         /// Get the position the window should be in
         /// </summary>
-        public Point GetWindowStartPos()
+        private Point GetWindowStartPos()
         {
             return new Point(
                     System.Windows.SystemParameters.PrimaryScreenWidth - this.Width,
@@ -60,11 +60,11 @@ namespace ShowFolderNotifyIcon
                 );
         }
 
-        public void PopulateGrid(List<string>? files)
+        private void PopulateGrid()
         {
-            if (files != null)
+            if (_folderContentsWidgetViewModel.FileList != null)
             {
-                foreach (var file in files)
+                foreach (var file in _folderContentsWidgetViewModel.FileList)
                 {
                     mainGrid.RowDefinitions.Add(new RowDefinition());
                     var fileTextBox = new TextBox();
@@ -74,12 +74,13 @@ namespace ShowFolderNotifyIcon
                     fileTextBox.Background = new SolidColorBrush(Color.FromRgb(19, 19, 19));
                     fileTextBox.FontSize = 16;
                     fileTextBox.Foreground = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+                    fileTextBox.BorderBrush = null;
                     mainGrid.Children.Add(fileTextBox);
                 }
             }
         }
 
-        public void ClearGrid()
+        private void ClearGrid()
         {
             // For now we can just remove all the text boxes
             var elementsToRemove = new List<UIElement>();
@@ -117,10 +118,10 @@ namespace ShowFolderNotifyIcon
             this.Left = startPos.X;
             this.Top = startPos.Y;
 
-            PopulateGrid(_folderContentsWidgetViewModel.FileList);
+            PopulateGrid();
         }
 
-        public void TaskbarIcon_Click(object sender, RoutedEventArgs e)
+        private void TaskbarIcon_Click(object sender, RoutedEventArgs e)
         {
             if(WindowState == WindowState.Minimized)
             {
@@ -132,18 +133,18 @@ namespace ShowFolderNotifyIcon
             }
         }
 
-        public void OpenFolderDialog_MouseEnter(object sender, MouseEventArgs e)
+        private void OpenFolderDialog_MouseEnter(object sender, MouseEventArgs e)
         {
             OpenFolderDialog.Background = new SolidColorBrush(Colors.Gray);
         }
 
-        public void OpenFolderDialog_MouseLeave(object sender, MouseEventArgs e)
+        private void OpenFolderDialog_MouseLeave(object sender, MouseEventArgs e)
         {
             OpenFolderDialog.Background = new SolidColorBrush(Colors.Black);
         }
 
         // Opens file dialogue
-        public void OpenFolderDialog_MouseLeftUp(object sender, MouseEventArgs e)
+        private void OpenFolderDialog_MouseLeftUp(object sender, MouseEventArgs e)
         {
             using var dialog = new System.Windows.Forms.FolderBrowserDialog
             {
@@ -158,7 +159,7 @@ namespace ShowFolderNotifyIcon
                 {
                     _folderContentsWidgetViewModel.FolderPath = dialog.SelectedPath;
                     ClearGrid();
-                    PopulateGrid(_folderContentsWidgetViewModel.FileList);
+                    PopulateGrid();
                 }
             }
         }

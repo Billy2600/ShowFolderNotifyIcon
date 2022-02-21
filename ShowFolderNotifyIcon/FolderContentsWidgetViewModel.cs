@@ -60,10 +60,20 @@ namespace ShowFolderNotifyIcon
 
         public List<string> GetFileList()
         {
-            var directories = _fileSystem.Directory.GetDirectories(_folderContentsWidget.FolderPath);
-            var files = _fileSystem.Directory.GetFiles(_folderContentsWidget.FolderPath);
+            var directoryPaths = _fileSystem.Directory.GetDirectories(_folderContentsWidget.FolderPath);
+            var filePaths = _fileSystem.Directory.GetFiles(_folderContentsWidget.FolderPath);
 
-            return directories.Concat(files).ToList();
+            var fullPathList = directoryPaths.Concat(filePaths).ToList();
+
+            var namesOnly = new List<string>();
+            foreach(var path in fullPathList)
+            {
+                namesOnly.Add(_fileSystem.Path.GetFileName(path));
+            }
+
+            namesOnly.RemoveAll(x => x.ToLower() == "desktop.ini");
+
+            return namesOnly;
         }
 
         #endregion
