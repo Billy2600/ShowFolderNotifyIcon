@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.IO;
 using System.IO.Abstractions;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,6 +22,8 @@ namespace ShowFolderNotifyIcon
     {
         private readonly IHost host;
 
+        public IConfiguration Configuration { get; private set; }
+
         public App()
         {
             host = Host.CreateDefaultBuilder()
@@ -33,6 +36,13 @@ namespace ShowFolderNotifyIcon
 
         private void ConfigureServices(IConfiguration configuration, IServiceCollection services)
         {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+
+            Configuration = builder.Build();
+
+            services.Configure<AppSettings>(Configuration.GetSection(nameof(AppSettings)));
             services.AddScoped<FolderContentsWidgetViewModel, FolderContentsWidgetViewModel>();
             services.AddScoped<IFileSystem, FileSystem>();
             services.AddSingleton<MainWindow>();

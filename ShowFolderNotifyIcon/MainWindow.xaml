@@ -22,7 +22,7 @@
             <!-- Fake borders 'around' buttons -->
             <!--<Border x:Name="HideWindow" Margin="738,0,0,0" Background="Black" />
             <Label Content="X" HorizontalAlignment="Center" Margin="741,0,0,0" VerticalAlignment="Top" Width="19" Foreground="White" FontSize="9" FontFamily="Cascadia Code" FontWeight="Bold" FontStyle="Normal"/>-->
-            <Border x:Name="OpenFolderDialog" Background="Black" Margin="0,0,740,0">
+            <Border x:Name="OpenFolderDialog" Background="Black" Margin="0,0,740,0" ToolTip="Select folder to view">
                 <Image Source="/ico/folder.ico" Stretch="Fill" Margin="3,3,3,3" RenderTransformOrigin="0.812,0.765"/>
             </Border>
         </Grid>

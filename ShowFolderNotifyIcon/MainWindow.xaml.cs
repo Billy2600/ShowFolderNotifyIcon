@@ -1,6 +1,7 @@
 ﻿using Hardcodet.Wpf.TaskbarNotification;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.IO.Abstractions;
 using System.Linq;
 using System.Text;
@@ -34,10 +35,11 @@ namespace ShowFolderNotifyIcon
             DataContext = _folderContentsWidgetViewModel;
 
             // Taskbar icon will handle all the taskbar duties
-            this.ShowInTaskbar = false;
+            ShowInTaskbar = false;
 
             InitializeComponent();
             Loaded += MainWindow_Loaded;
+            Closed += MainWindow_Closed;
             taskbarIcon.TrayLeftMouseDown += TaskbarIcon_Click;
             
             OpenFolderDialog.MouseEnter += OpenFolderDialog_MouseEnter;
@@ -119,6 +121,12 @@ namespace ShowFolderNotifyIcon
             this.Top = startPos.Y;
 
             PopulateGrid();
+        }
+
+        private void MainWindow_Closed(object? sender, EventArgs e)
+        {
+            var appSettingsJson = _folderContentsWidgetViewModel.ExportAppSettings();
+            File.WriteAllText(Directory.GetCurrentDirectory() + "\\appsettings.json", appSettingsJson);
         }
 
         private void TaskbarIcon_Click(object sender, RoutedEventArgs e)
