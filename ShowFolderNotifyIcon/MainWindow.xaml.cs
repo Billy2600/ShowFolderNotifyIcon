@@ -48,6 +48,10 @@ namespace ShowFolderNotifyIcon
             OpenFolderDialog.MouseEnter += OpenFolderDialog_MouseEnter;
             OpenFolderDialog.MouseLeave += OpenFolderDialog_MouseLeave;
             OpenFolderDialog.MouseLeftButtonUp += OpenFolderDialog_MouseLeftUp;
+
+            RefreshView.MouseEnter += RefreshView_MouseEnter;
+            RefreshView.MouseLeave += RefreshView_MouseLeave;
+            RefreshView.MouseLeftButtonUp += RefreshView_MouseLeftUp;
         }
 
         #endregion
@@ -171,11 +175,28 @@ namespace ShowFolderNotifyIcon
             {
                 if(dialog.SelectedPath != _folderContentsWidgetViewModel.FolderPath)
                 {
-                    _folderContentsWidgetViewModel.FolderPath = dialog.SelectedPath;
+                    _folderContentsWidgetViewModel.FolderPath = dialog.SelectedPath; // Also calls GetFileList()
                     ClearGrid();
                     PopulateGrid();
                 }
             }
+        }
+
+        private void RefreshView_MouseEnter(object sender, MouseEventArgs e)
+        {
+            RefreshView.Background = new SolidColorBrush(Colors.Gray);
+        }
+
+        private void RefreshView_MouseLeave(object sender, MouseEventArgs e)
+        {
+            RefreshView.Background = new SolidColorBrush(Colors.Black);
+        }
+
+        private void RefreshView_MouseLeftUp(object sender, MouseEventArgs e)
+        {
+            _folderContentsWidgetViewModel.GetFileList();
+            ClearGrid();
+            PopulateGrid();
         }
 
         // Need to use *Preview*MouseLeftButtonDown as it captures any clicks before the internal parts of the control process the click
