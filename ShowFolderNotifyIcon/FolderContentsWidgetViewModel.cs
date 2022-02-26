@@ -60,10 +60,12 @@ namespace ShowFolderNotifyIcon
             _appSettings = appSettings.Value;
 
             _folderContentsWidget.FolderPath = _appSettings.FolderPath ?? Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
-            _folderContentsWidget.FileList = GetFileList();
         }
 
+        /// <summary>
+        /// Returns and sets file list
+        /// </summary>
+        /// <returns></returns>
         public List<string> GetFileList()
         {
             var directoryPaths = _fileSystem.Directory.GetDirectories(_folderContentsWidget.FolderPath);
@@ -78,6 +80,8 @@ namespace ShowFolderNotifyIcon
             }
 
             namesOnly.RemoveAll(x => x.ToLower() == "desktop.ini");
+
+            _folderContentsWidget.FileList = namesOnly;
 
             return namesOnly;
         }

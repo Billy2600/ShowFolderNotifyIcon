@@ -34,6 +34,8 @@ namespace ShowFolderNotifyIcon
             _folderContentsWidgetViewModel = folderContentsWidgetViewModel;
             DataContext = _folderContentsWidgetViewModel;
 
+            _folderContentsWidgetViewModel.GetFileList();
+
             // Taskbar icon will handle all the taskbar duties
             ShowInTaskbar = false;
 
