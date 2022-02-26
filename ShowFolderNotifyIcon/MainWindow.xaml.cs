@@ -1,6 +1,7 @@
 ﻿using Hardcodet.Wpf.TaskbarNotification;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Abstractions;
 using System.Linq;
@@ -79,6 +80,9 @@ namespace ShowFolderNotifyIcon
                     fileTextBox.FontSize = 16;
                     fileTextBox.Foreground = new SolidColorBrush(Color.FromRgb(255, 255, 255));
                     fileTextBox.BorderBrush = null;
+                    fileTextBox.Cursor = Cursors.Hand;
+                    fileTextBox.PreviewMouseLeftButtonDown += FileTextBox_PreviewMouseLeftButtonDown;
+
                     mainGrid.Children.Add(fileTextBox);
                 }
             }
@@ -171,6 +175,17 @@ namespace ShowFolderNotifyIcon
                     ClearGrid();
                     PopulateGrid();
                 }
+            }
+        }
+
+        // Need to use *Preview*MouseLeftButtonDown as it captures any clicks before the internal parts of the control process the click
+        private void FileTextBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var textBoxSender = sender as TextBox;
+            if (textBoxSender != null)
+            {
+                var fileOrFolderPath = _folderContentsWidgetViewModel.FolderPath + "\\" + textBoxSender.Text;
+                Process.Start("explorer", $"/select, {fileOrFolderPath}");
             }
         }
 
