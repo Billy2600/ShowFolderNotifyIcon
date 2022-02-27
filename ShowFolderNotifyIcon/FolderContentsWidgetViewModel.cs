@@ -82,6 +82,11 @@ namespace ShowFolderNotifyIcon
 
             namesOnly.RemoveAll(x => x.ToLower() == "desktop.ini");
 
+            if(namesOnly.Count() == 0)
+            {
+                namesOnly.Add("This folder is empty.");
+            }
+
             _folderContentsWidget.FileList = namesOnly;
 
             return namesOnly;

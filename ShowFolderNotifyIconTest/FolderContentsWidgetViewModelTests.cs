@@ -126,7 +126,8 @@ namespace ShowFolderNotifyIconTest
             var resultFiles = folderContentsWidgetVM.GetFileList();
 
             // Assert
-            Assert.AreEqual(0, resultFiles.Count);
+            // One result because of "This folder is empty." entry
+            Assert.AreEqual(1, resultFiles.Count);
         }
 
         [Test]

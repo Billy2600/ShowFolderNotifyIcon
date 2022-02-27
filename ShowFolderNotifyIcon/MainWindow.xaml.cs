@@ -228,7 +228,7 @@ namespace ShowFolderNotifyIcon
         private void FileTextBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var textBoxSender = sender as TextBox;
-            if (textBoxSender != null)
+            if (textBoxSender != null && textBoxSender.Text != "This folder is empty.")
             {
                 var fileOrFolderPath = _folderContentsWidgetViewModel.FolderPath + "\\" + textBoxSender.Text;
                 Process.Start("explorer", $"/select, {fileOrFolderPath}");
