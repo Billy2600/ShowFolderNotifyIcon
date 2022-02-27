@@ -3,6 +3,7 @@ using Microsoft.Extensions.Options;
 using Moq;
 using NUnit.Framework;
 using ShowFolderNotifyIcon;
+using System;
 using System.Collections.Generic;
 using System.IO.Abstractions;
 using System.Text.RegularExpressions;
@@ -29,6 +30,42 @@ namespace ShowFolderNotifyIconTest
             _appSettings = new AppSettings();
 
             _mockOptions.Setup(x => x.Value).Returns(_appSettings);
+        }
+
+        [Test]
+        public void FolderPath_HappyPath()
+        {
+            // Arrange
+            var folderPath = "C:\\folders\\" + _fixture.Create<string>();
+
+            var mockFileSystem = new Mock<IFileSystem>();
+            _appSettings.FolderPath = folderPath;
+
+            var folderContentsWidgetVM = new FolderContentsWidgetViewModel(mockFileSystem.Object, _mockOptions.Object);
+
+            // Act
+            var folderPathResult = folderContentsWidgetVM.FolderPath;
+
+            // Assert
+            Assert.AreEqual(folderPath, folderPathResult);
+        }
+
+        [TestCase(null)]
+        [TestCase("")]
+        [TestCase("     ")]
+        public void FolderPath_NullOrEmptyPath(string? path)
+        {
+            // Arrange
+            var mockFileSystem = new Mock<IFileSystem>();
+            _appSettings.FolderPath = path;
+
+            var folderContentsWidgetVM = new FolderContentsWidgetViewModel(mockFileSystem.Object, _mockOptions.Object);
+
+            // Act
+            var folderPathResult = folderContentsWidgetVM.FolderPath;
+
+            // Assert
+            Assert.AreEqual(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Downloads", folderPathResult);
         }
 
         [Test]

@@ -59,7 +59,8 @@ namespace ShowFolderNotifyIcon
             _fileSystem = fileSystem;
             _appSettings = appSettings.Value;
 
-            _folderContentsWidget.FolderPath = _appSettings.FolderPath ?? Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            if(string.IsNullOrWhiteSpace(_appSettings.FolderPath)) _folderContentsWidget.FolderPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Downloads";
+            else _folderContentsWidget.FolderPath = _appSettings.FolderPath;
         }
 
         /// <summary>
