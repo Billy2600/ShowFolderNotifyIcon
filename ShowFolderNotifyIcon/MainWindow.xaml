@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ShowFolderNotifyIcon"
         xmlns:tb="http://www.hardcodet.net/taskbar"
         mc:Ignorable="d"
-        ResizeMode="CanMinimize"
+        WindowStyle="None"
         Title="MainWindow" Height="450" Width="800" Background="#191919" Foreground="White">
     <ScrollViewer>
         <Grid HorizontalAlignment="left" Height="auto" VerticalAlignment="Top" Width="760" ShowGridLines="False" Name="mainGrid">
@@ -16,7 +16,17 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="20" Name="ButtonsRow"></RowDefinition>
             </Grid.RowDefinitions>
-            <tb:TaskbarIcon IconSource="/ico/folder.ico" Name="taskbarIcon" />
+            <tb:TaskbarIcon IconSource="/ico/folder.ico" Name="taskbarIcon">
+                <tb:TaskbarIcon.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Close" Click="TaskBarIconMenuClose_Click">
+                            <MenuItem.Icon>
+                                <Image Source="/ico/close.ico" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </ContextMenu>
+                </tb:TaskbarIcon.ContextMenu>
+            </tb:TaskbarIcon>
             <!-- Gives us a faux title bar -->
             <Border Background="#FF333333" />
             <!-- Fake borders 'around' buttons -->
@@ -27,6 +37,9 @@
             </Border>
             <Border x:Name="RefreshView" Background="Black" Margin="21,0,719,0" ToolTip="Refresh current view">
                 <Image Source="/ico/refresh.ico" Stretch="Fill" Margin="3,3,3,3" RenderTransformOrigin="0.812,0.765"/>
+            </Border>
+            <Border x:Name="CloseWindow" Background="Black" Margin="740,0,0,0" ToolTip="Close window">
+                <Image Source="/ico/close.ico" Stretch="Fill" Margin="3,3,3,3" RenderTransformOrigin="0.812,0.765"/>
             </Border>
         </Grid>
     </ScrollViewer>

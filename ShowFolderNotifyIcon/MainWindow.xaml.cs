@@ -52,6 +52,10 @@ namespace ShowFolderNotifyIcon
             RefreshView.MouseEnter += RefreshView_MouseEnter;
             RefreshView.MouseLeave += RefreshView_MouseLeave;
             RefreshView.MouseLeftButtonUp += RefreshView_MouseLeftUp;
+
+            CloseWindow.MouseEnter += CloseWindow_MouseEnter;
+            CloseWindow.MouseLeave += CloseWindow_MouseLeave;
+            CloseWindow.MouseLeftButtonUp += CloseWindow_MouseLeftUp;
         }
 
         #endregion
@@ -141,14 +145,19 @@ namespace ShowFolderNotifyIcon
 
         private void TaskbarIcon_Click(object sender, RoutedEventArgs e)
         {
-            if(WindowState == WindowState.Minimized)
+            if(Visibility == Visibility.Visible)
             {
-                WindowState = WindowState.Normal;
+                Hide();
             }
-            else if (WindowState == WindowState.Normal)
+            else if(Visibility == Visibility.Hidden)
             {
-                WindowState = WindowState.Minimized;
+                Show();
             }
+        }
+
+        private void TaskBarIconMenuClose_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
 
         private void OpenFolderDialog_MouseEnter(object sender, MouseEventArgs e)
@@ -197,6 +206,21 @@ namespace ShowFolderNotifyIcon
             _folderContentsWidgetViewModel.GetFileList();
             ClearGrid();
             PopulateGrid();
+        }
+
+        private void CloseWindow_MouseEnter(object sender, MouseEventArgs e)
+        {
+            CloseWindow.Background = new SolidColorBrush(Colors.Gray);
+        }
+
+        private void CloseWindow_MouseLeave(object sender, MouseEventArgs e)
+        {
+            CloseWindow.Background = new SolidColorBrush(Colors.Black);
+        }
+
+        private void CloseWindow_MouseLeftUp(object sender, MouseEventArgs e)
+        {
+            Hide();
         }
 
         // Need to use *Preview*MouseLeftButtonDown as it captures any clicks before the internal parts of the control process the click
