@@ -5,7 +5,9 @@ VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShowFolderNotifyIcon", "ShowFolderNotifyIcon\ShowFolderNotifyIcon.csproj", "{EB3E05BE-BD13-4CD3-B20A-8CA261CCB1D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowFolderNotifyIconTest", "ShowFolderNotifyIconTest\ShowFolderNotifyIconTest.csproj", "{31F94DCB-C33E-4255-BB82-61E48E3F7D2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShowFolderNotifyIconTest", "ShowFolderNotifyIconTest\ShowFolderNotifyIconTest.csproj", "{31F94DCB-C33E-4255-BB82-61E48E3F7D2C}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Installer", "Installer\Installer.vdproj", "{86F02AD8-8D63-413C-8068-219D371757EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,8 @@ Global
 		{31F94DCB-C33E-4255-BB82-61E48E3F7D2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31F94DCB-C33E-4255-BB82-61E48E3F7D2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31F94DCB-C33E-4255-BB82-61E48E3F7D2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86F02AD8-8D63-413C-8068-219D371757EB}.Debug|Any CPU.ActiveCfg = Debug
+		{86F02AD8-8D63-413C-8068-219D371757EB}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
