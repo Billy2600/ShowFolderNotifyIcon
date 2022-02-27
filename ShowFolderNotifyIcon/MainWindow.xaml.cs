@@ -159,6 +159,7 @@ namespace ShowFolderNotifyIcon
             else if(Visibility == Visibility.Hidden)
             {
                 Show();
+                Activate();
             }
         }
 
