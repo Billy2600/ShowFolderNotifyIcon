@@ -44,6 +44,7 @@ namespace ShowFolderNotifyIcon
             InitializeComponent();
             Loaded += MainWindow_Loaded;
             Closed += MainWindow_Closed;
+            SizeChanged += MainWindow_SizeChanged;
             taskbarIcon.TrayLeftMouseDown += TaskbarIcon_Click;
             
             OpenFolderDialog.MouseEnter += OpenFolderDialog_MouseEnter;
@@ -139,6 +140,14 @@ namespace ShowFolderNotifyIcon
         {
             var appSettingsJson = _folderContentsWidgetViewModel.ExportAppSettings();
             File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\ShowFolderNotifyIcon\\appsettings.json", appSettingsJson);
+        }
+
+        private void MainWindow_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            CloseWindow.Margin = new Thickness(e.NewSize.Width - 35, 0, 0, 0);
+            mainGrid.Width = e.NewSize.Width - 40;
+            MainColumn.Width = new GridLength(e.NewSize.Width - 40);
+            MainScrollViewer.Height = e.NewSize.Height - 35;
         }
 
         private void TaskbarIcon_Click(object sender, RoutedEventArgs e)

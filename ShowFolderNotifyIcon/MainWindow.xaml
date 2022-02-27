@@ -23,21 +23,21 @@
         <!-- Gives us a faux title bar -->
         <Canvas Background="#FF333333" Height="20">
             <!-- Fake borders 'around' buttons -->
-            <Border x:Name="OpenFolderDialog" Background="Black" Margin="0,0,740,0" ToolTip="Select folder to view" Height="20">
+            <Border x:Name="OpenFolderDialog" Background="Black" Margin="0,0,0,0" ToolTip="Select folder to view" Height="20">
                 <Image Source="/ico/folder.ico" Stretch="Fill" Margin="3,3,3,3" RenderTransformOrigin="0.812,0.765"/>
             </Border>
-            <Border x:Name="RefreshView" Background="Black" Margin="21,0,719,0" ToolTip="Refresh current view" Height="20">
+            <Border x:Name="RefreshView" Background="Black" Margin="21,0,0,0" ToolTip="Refresh current view" Height="20">
                 <Image Source="/ico/refresh.ico" Stretch="Fill" Margin="3,3,3,3" RenderTransformOrigin="0.812,0.765"/>
             </Border>
-            <Border x:Name="CloseWindow" Background="Black" ToolTip="Close window" Height="20" HorizontalAlignment="Left" Canvas.Left="767" VerticalAlignment="Center">
+            <Border x:Name="CloseWindow" Background="Black" Margin="765,0,0,0" ToolTip="Close window" Height="20">
                 <Image Source="/ico/close.ico" Stretch="Fill" Margin="3,3,3,3" RenderTransformOrigin="0.812,0.765"/>
             </Border>
             <Label Name="FilePathLabel" Content="{Binding Path=FolderPath}" Foreground="White" Canvas.Left="46" Canvas.Top="-3" FontSize="11" />
         </Canvas>
-        <ScrollViewer Height="415">
+        <ScrollViewer Height="415" Name="MainScrollViewer">
             <Grid HorizontalAlignment="left" Height="auto" VerticalAlignment="Top" Width="760" ShowGridLines="False" Name="mainGrid">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="760"/>
+                    <ColumnDefinition Width="760" Name="MainColumn" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                 </Grid.RowDefinitions>
