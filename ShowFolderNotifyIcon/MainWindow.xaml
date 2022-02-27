@@ -32,11 +32,12 @@
             <Border x:Name="CloseWindow" Background="Black" ToolTip="Close window" Height="20" HorizontalAlignment="Left" Canvas.Left="767" VerticalAlignment="Center">
                 <Image Source="/ico/close.ico" Stretch="Fill" Margin="3,3,3,3" RenderTransformOrigin="0.812,0.765"/>
             </Border>
+            <Label Name="FilePathLabel" Content="{Binding Path=FolderPath}" Foreground="White" Canvas.Left="46" Canvas.Top="-3" FontSize="11" />
         </Canvas>
         <ScrollViewer Height="415">
             <Grid HorizontalAlignment="left" Height="auto" VerticalAlignment="Top" Width="760" ShowGridLines="False" Name="mainGrid">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="760"></ColumnDefinition>
+                    <ColumnDefinition Width="760"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                 </Grid.RowDefinitions>
