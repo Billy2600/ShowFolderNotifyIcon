@@ -21,6 +21,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_3E4566F4F4F840E2818AFA7272B389EB"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_7596EE5EA34146CEB548730556892E4A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -75,6 +81,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -106,6 +128,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3E4566F4F4F840E2818AFA7272B389EB"
+            {
+            "SourcePath" = "8:..\\ShowFolderNotifyIcon\\ico\\folder.ico"
+            "TargetName" = "8:folder.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_082EC4FC608B4B538F9B755D2D3CE24A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7596EE5EA34146CEB548730556892E4A"
             {
             "SourcePath" = "8:..\\ShowFolderNotifyIcon\\appsettings.json"
@@ -188,6 +230,17 @@
                     }
                 }
             }
+            "{1525181F-901A-416C-8A58-119130FE478E}:_FC8D99E24CF6496AA211EA555D4911E1"
+            {
+            "Name" = "8:#1928"
+            "AlwaysCreate" = "11:FALSE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Property" = "8:StartupFolder"
+                "Folders"
+                {
+                }
+            }
         }
         "LaunchCondition"
         {
@@ -205,7 +258,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ShowFolderNotifyIcon"
         "ProductCode" = "8:{ACD8159C-CB96-403C-A4EA-DA7886DE8C56}"
-        "PackageCode" = "8:{7A2BBEA3-763F-4BAB-AC4C-4E88B694A2F3}"
+        "PackageCode" = "8:{C52048EA-B385-4E90-9404-6C0D6060BC39}"
         "UpgradeCode" = "8:{D097B60A-3A1A-4D33-BD3E-25F081E7DD1F}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -325,6 +378,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_20316D14962149E482FAC61D5852146E"
+            {
+            "Name" = "8:ShowFolderNotifyIcon"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_01B8D7F25A09417C8CB1AB7C5BB34F69"
+            "Folder" = "8:_FC8D99E24CF6496AA211EA555D4911E1"
+            "WorkingFolder" = "8:_082EC4FC608B4B538F9B755D2D3CE24A"
+            "Icon" = "8:_3E4566F4F4F840E2818AFA7272B389EB"
+            "Feature" = "8:"
+            }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_2E118CE015A34AD18254D3545C63B4BB"
             {
             "Name" = "8:ShowFolderNotifyIcon"
@@ -336,7 +403,7 @@
             "Target" = "8:_01B8D7F25A09417C8CB1AB7C5BB34F69"
             "Folder" = "8:_0DF06A8526DA4E088F3EF12FCFF7BA46"
             "WorkingFolder" = "8:_082EC4FC608B4B538F9B755D2D3CE24A"
-            "Icon" = "8:"
+            "Icon" = "8:_3E4566F4F4F840E2818AFA7272B389EB"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_45594BC1E00640FEB395BF5D5A43C64C"
@@ -350,7 +417,7 @@
             "Target" = "8:_01B8D7F25A09417C8CB1AB7C5BB34F69"
             "Folder" = "8:_C9C87D9A453743E8A0156D84EF2A3136"
             "WorkingFolder" = "8:_082EC4FC608B4B538F9B755D2D3CE24A"
-            "Icon" = "8:"
+            "Icon" = "8:_3E4566F4F4F840E2818AFA7272B389EB"
             "Feature" = "8:"
             }
         }
@@ -754,7 +821,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_01B8D7F25A09417C8CB1AB7C5BB34F69"
             {
-            "SourcePath" = "8:..\\ShowFolderNotifyIcon\\obj\\Debug\\net6.0-windows\\apphost.exe"
+            "SourcePath" = "8:..\\ShowFolderNotifyIcon\\obj\\Release\\net6.0-windows\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_082EC4FC608B4B538F9B755D2D3CE24A"
