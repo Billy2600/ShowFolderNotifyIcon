@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.IO.Abstractions;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -140,7 +141,7 @@ namespace ShowFolderNotifyIcon
         private void MainWindow_Closed(object? sender, EventArgs e)
         {
             var appSettingsJson = _folderContentsWidgetViewModel.ExportAppSettings();
-            File.WriteAllText(Directory.GetCurrentDirectory() + "\\appsettings.json", appSettingsJson);
+            File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\ShowFolderNotifyIcon\\appsettings.json", appSettingsJson);
         }
 
         private void TaskbarIcon_Click(object sender, RoutedEventArgs e)

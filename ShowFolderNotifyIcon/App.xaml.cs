@@ -8,6 +8,7 @@ using System.Data;
 using System.IO;
 using System.IO.Abstractions;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -37,7 +38,7 @@ namespace ShowFolderNotifyIcon
         private void ConfigureServices(IConfiguration configuration, IServiceCollection services)
         {
             var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
+                .SetBasePath(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\ShowFolderNotifyIcon")
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
             Configuration = builder.Build();

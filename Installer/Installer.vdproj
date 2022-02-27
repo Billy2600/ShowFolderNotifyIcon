@@ -19,6 +19,12 @@
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_7596EE5EA34146CEB548730556892E4A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -100,6 +106,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7596EE5EA34146CEB548730556892E4A"
+            {
+            "SourcePath" = "8:..\\ShowFolderNotifyIcon\\appsettings.json"
+            "TargetName" = "8:appsettings.json"
+            "Tag" = "8:"
+            "Folder" = "8:_980F0AB7E4374E878947874BD2597AC1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -140,6 +166,28 @@
                 {
                 }
             }
+            "{1525181F-901A-416C-8A58-119130FE478E}:_F4A42FF83AC2435ABB477BC1C74B9488"
+            {
+            "Name" = "8:#1915"
+            "AlwaysCreate" = "11:FALSE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Property" = "8:AppDataFolder"
+                "Folders"
+                {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_980F0AB7E4374E878947874BD2597AC1"
+                    {
+                    "Name" = "8:ShowFolderNotifyIcon"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_5B0411DEBA994C3C96C5F95DC1F11EE7"
+                        "Folders"
+                        {
+                        }
+                    }
+                }
+            }
         }
         "LaunchCondition"
         {
@@ -157,7 +205,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ShowFolderNotifyIcon"
         "ProductCode" = "8:{ACD8159C-CB96-403C-A4EA-DA7886DE8C56}"
-        "PackageCode" = "8:{5A66D5A3-F1D8-4050-98D7-56BBA9F19A0A}"
+        "PackageCode" = "8:{7A2BBEA3-763F-4BAB-AC4C-4E88B694A2F3}"
         "UpgradeCode" = "8:{D097B60A-3A1A-4D33-BD3E-25F081E7DD1F}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
