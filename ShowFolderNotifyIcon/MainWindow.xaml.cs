@@ -118,10 +118,7 @@ namespace ShowFolderNotifyIcon
 
             for (int i = 0; i < mainGrid.RowDefinitions.Count; i++)
             {
-                if (mainGrid.RowDefinitions[i].Name != "ButtonsRow")
-                {
-                    mainGrid.RowDefinitions.RemoveAt(i);
-                }
+                mainGrid.RowDefinitions.RemoveAt(i);
             }
         }
 
