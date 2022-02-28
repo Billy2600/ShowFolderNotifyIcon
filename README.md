@@ -6,9 +6,11 @@ Have you ever wanted to quickly view and get at the contents of a folder? This a
 ![ShowFolderNotifyIcon Screenshot](MainWindow.png)
 
 ## How to install
-Click on "(number) Release" above and download ShowFolderNotifyIcon.msi. Double click on the file once downloaded and follow the instructions to install the program. ShowFolderNotifyIcon is for Windows PCs only.
+Click on "(number) Release" above and download ShowFolderNotifyIcon.msi. Double click on the file once downloaded and follow the instructions to install the program. ShowFolderNotifyIcon is for 64-bit (x64) Windows PCs only.
 
-**Note:** The program will automatically add itself to Windows startup, you can easily disable it from starting with Windows in the Task Manager's Startup tab.
+**Notes:**
+* The program will automatically add itself to Windows startup, you can easily disable it from starting with Windows in the Task Manager's Startup tab.
+* If prompted to download the .NET Runtime, make sure to download "Run desktop apps" version.
 
 ## How to use
 * The program will default to using your Downloads folder.
